@@ -1,8 +1,8 @@
-import { Formik, Field,Form, ErrorMessage } from 'formik';
+import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import 'yup-phone';
-import { ButtonForm } from './ContactForm.styled';
-import { useDispatch,useSelector } from 'react-redux';
+import { ButtonForm, ErrorInfo } from './ContactForm.styled';
+import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/contacts/operations';
 import { nanoid } from '@reduxjs/toolkit';
 import { selectContact } from 'redux/selectors';
@@ -30,25 +30,19 @@ export const ContactForm = () => {
   const contacts = useSelector(selectContact);
 
   const handleSubmit = (values, actions) => {
-    if (contact.find(contact => contact.name === values.name)) {
+    if (contacts.find(contact => contact.name === values.name)) {
       alert(`${values.name} is already in contacts`);
-}
-
-  const contact = {
-  name: values.name,
-  number: values.number,
-  id: nanoid(),
-  };
-
-  //  if (contacts.find(({ name }) => name === contact.name)) {
-  // alert(`${contact.name} is already in contacts`);
-  // return;
-  // }
+      return;
+    }
+    const contact = {
+      name: values.name,
+      number: values.number,
+      id: nanoid(),
+    };
 
     dispatch(addContact(contact));
     actions.resetForm();
   };
-
 
   return (
     <Formik
@@ -58,7 +52,7 @@ export const ContactForm = () => {
     >
       <Form>
         <Field
-     as={TextField}
+          as={TextField}
           name="name"
           label="Name"
           placeholder="Annie Copeland"
