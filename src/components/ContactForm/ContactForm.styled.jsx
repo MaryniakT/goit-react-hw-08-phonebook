@@ -1,5 +1,15 @@
-import { Form as FormikForm, ErrorMessage as FormikErrorMessage } from 'formik';
+import { Form as FormikForm } from 'formik';
 import styled from 'styled-components';
+
+export const Container = styled.div`
+  max-width: 500px;
+  margin: 15px auto;
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 5px;
+  box-shadow: 0 15px 30px 1px grey;
+  text-align: center;
+`;
 
 export const Form = styled(FormikForm)`
   padding: 8px;
@@ -10,17 +20,17 @@ export const Form = styled(FormikForm)`
   margin-bottom: 10px;
 `;
 
-export const ErrorMessage = styled(FormikErrorMessage)`
+export const ErrorInfo = styled.span`
   font-size: 14px;
-  color: ${props => props.theme.colors.accent};
+  color: #38d2d2;
 `;
 
 export const ButtonForm = styled.button`
-  width: 380px;
+  width: 200px;
   margin: 0 auto;
   color: #fff;
   padding: 15px 25px;
-  background-color: #2196F3;
+  background-color: #38d2d2;
   background-image: radial-gradient(
       93% 87% at 87% 89%,
       rgba(0, 0, 0, 0.23) 0%,

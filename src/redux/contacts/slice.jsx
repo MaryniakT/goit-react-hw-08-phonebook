@@ -52,6 +52,5 @@ export const contactSlice = createSlice({
       .addCase(addContact.fulfilled, handleAddContactSuccess)
       .addCase(deleteContact.fulfilled, handleDeleteContactSuccess);
   },
-
 });
 export const contactsReducer = contactSlice.reducer;
